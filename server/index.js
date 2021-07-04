@@ -6,12 +6,12 @@ import postRoutes from "./routes/posts.js";
 
 const app = express();
 
-// prefix the postRoutes with '/posts'
-app.use('/posts', postRoutes);
-
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+
+// prefix the postRoutes with '/posts'
+app.use('/posts', postRoutes);
 
 const CONNECTION_URL = "<url>";
 const PORT = process.env.PORT || 5000;
