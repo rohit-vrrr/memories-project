@@ -14,12 +14,26 @@ export default makeStyles((theme) => ({
         flexWrap: 'wrap',
         justifyContent: 'center'
     },
-    fieldInput: {
+    heading: {
+        fontFamily: "'Montserrat', sans-serif",
+        fontWeight: 600
+    },
+    formTextInput: {
+        fontFamily: "'Montserrat', sans-serif",
+        fontWeight: 500
+    },
+    formFieldInput: {
         width: '97%',
         margin: '10px 0'
     },
     buttonSubmit: {
         marginTop: 10,
-        marginBottom: 10
+        fontFamily: "'Montserrat', sans-serif",
+        fontWeight: 600
+    },
+    buttonClear: {
+        marginTop: 10,
+        fontFamily: "'Montserrat', sans-serif",
+        fontWeight: 600
     }
 }));
