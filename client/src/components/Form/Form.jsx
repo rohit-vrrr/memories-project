@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FileBase from "react-file-base64";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import useStyles from "./stylesForm";
-import { createPost } from "../../actions/posts";
+import { createPost, updatePost } from "../../actions/posts";
 
-const Form = () => {
+const Form = ({ currentId, setCurrentId }) => {
     const [postData, setPostData] = useState({
         creator: '',
         title: '',
@@ -14,18 +14,35 @@ const Form = () => {
         tags: '',
         selectedFile: ''
     });
+    const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
     const classes = useStyles();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        if(post) setPostData(post);
+    }, [post]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // dispatch an action
-        dispatch(createPost(postData));
+        if(currentId) {
+            dispatch(updatePost(currentId, postData));
+        } else {
+            dispatch(createPost(postData));
+        }
+
+        clear();
     }
 
     const clear = () => {
-
+        setCurrentId(null);
+        setPostData({ 
+            creator: '',
+            title: '',
+            message: '',
+            tags: '',
+            selectedFile: ''
+        });
     }
 
     return (
@@ -33,7 +50,7 @@ const Form = () => {
         <Paper className={classes.paper}>
             <form className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit} autoComplete="off" noValidate>
 
-                <Typography className={classes.heading} variant="h6">Creating a Memory</Typography>
+                <Typography className={classes.heading} variant="h6">{currentId ? "Editing" : "Creating"} a Memory</Typography>
 
                 <TextField 
                     name="creator" 

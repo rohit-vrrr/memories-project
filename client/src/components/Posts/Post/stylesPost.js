@@ -47,8 +47,12 @@ export default makeStyles({
     },
     title: {
         fontFamily: "'Montserrat', sans-serif",
-        fontWeight: 400,
+        fontWeight: 500,
         padding: '0 16px'
+    },
+    message: {
+        fontFamily: "'Montserrat', sans-serif",
+        fontWeight: 400
     },
     cardActions: {
         padding: '0 16px 8px 16px',
