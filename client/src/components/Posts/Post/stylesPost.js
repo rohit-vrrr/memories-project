@@ -21,6 +21,10 @@ export default makeStyles({
         height: '100%',
         position: 'relative'
     },
+    text: {
+        fontFamily: "'Montserrat', sans-serif",
+        fontWeight: 400
+    },
     overlay: {
         position: 'absolute',
         top: '20px',
@@ -42,6 +46,8 @@ export default makeStyles({
         margin: '20px'
     },
     title: {
+        fontFamily: "'Montserrat', sans-serif",
+        fontWeight: 400,
         padding: '0 16px'
     },
     cardActions: {

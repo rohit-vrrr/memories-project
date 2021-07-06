@@ -6,6 +6,7 @@ import thunk from "redux-thunk";
 
 import App from "./App.jsx";
 import reducers from "./reducers";
+import "./index.css";
 
 // setting up redux
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
