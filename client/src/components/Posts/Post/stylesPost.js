@@ -52,7 +52,7 @@ export default makeStyles({
     },
     message: {
         fontFamily: "'Montserrat', sans-serif",
-        fontWeight: 400
+        fontWeight: 500
     },
     cardActions: {
         padding: '0 16px 8px 16px',
