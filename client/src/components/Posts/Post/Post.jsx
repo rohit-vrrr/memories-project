@@ -7,7 +7,7 @@ import moment from "moment";
 import { useDispatch } from "react-redux";
 
 import useStyles from "./stylesPost";
-import { deletePost } from "../../../actions/posts"
+import { deletePost, likePost } from "../../../actions/posts"
 
 const Post = ({ post, setCurrentId }) => {
     const classes = useStyles();
@@ -48,7 +48,7 @@ const Post = ({ post, setCurrentId }) => {
             </CardContent>
             
             <CardActions className={classes.cardActions}>
-                <Button className={classes.text} size="small" color="primary" onClick={() => {}}>
+                <Button className={classes.text} size="small" color="primary" onClick={() => dispatch(likePost(post._id))}>
                     <ThumbUpAltIcon fontSize="small" />
                     {"Like : "}
                     {post.likeCount}
