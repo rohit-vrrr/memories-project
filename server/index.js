@@ -15,6 +15,10 @@ app.use(cors());
 // prefix the postRoutes with '/posts'
 app.use('/posts', postRoutes);
 
+app.get('/', (req, res) => {
+    res.send("Memories API");
+});
+
 const PORT = process.env.PORT || 5000;
 
 /* setting up mongoose connection */
