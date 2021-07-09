@@ -19,13 +19,13 @@ app.get('/', (req, res) => {
     res.send("Memories API");
 });
 
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
 /* setting up mongoose connection */
 mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
-        app.listen(PORT, () => {
-            console.log(`Server running on port ${PORT}`);
+        app.listen(port, () => {
+            console.log(`Server running on port ${port}`);
         })
     })
     .catch((err) => console.log(err.message));
