@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 
 import App from "./App.jsx";
-import reducers from "./reducers";
+import { reducers } from "./reducers";
 import "./index.css";
 
 // setting up redux
