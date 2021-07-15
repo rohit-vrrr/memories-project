@@ -1,0 +1,10 @@
+.copyright {
+    position: fixed;
+    width: 100%;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    bottom: 5px;
+    right: 25%;
+    left: 50%;
+}
