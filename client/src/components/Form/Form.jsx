@@ -8,7 +8,6 @@ import { createPost, updatePost } from "../../actions/posts";
 
 const Form = ({ currentId, setCurrentId }) => {
     const [postData, setPostData] = useState({
-        creator: '',
         title: '',
         message: '',
         tags: '',
@@ -17,32 +16,42 @@ const Form = ({ currentId, setCurrentId }) => {
     const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
     const classes = useStyles();
     const dispatch = useDispatch();
+    const user = JSON.parse(localStorage.getItem('profile'));
 
     useEffect(() => {
         if(post) setPostData(post);
     }, [post]);
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        if(currentId) {
-            dispatch(updatePost(currentId, postData));
-        } else {
-            dispatch(createPost(postData));
-        }
-
-        clear();
-    }
-
     const clear = () => {
         setCurrentId(null);
         setPostData({ 
-            creator: '',
             title: '',
             message: '',
             tags: '',
             selectedFile: ''
         });
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        if(currentId === null) {
+            dispatch(createPost({ ...postData, name: user?.result?.name }));
+        } else {
+            dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
+        }
+
+        clear();
+    }
+
+    if(!user?.result?.name) {
+        return (
+            <Paper className={classes.paper}>
+                <Typography className={classes.formTextInput} variant="h6" align="center">
+                    Please Sign In to create your own memories and like other's memories.
+                </Typography>
+            </Paper>
+        );
     }
 
     return (
@@ -52,16 +61,6 @@ const Form = ({ currentId, setCurrentId }) => {
 
                 <Typography className={classes.heading} variant="h6">{currentId ? "Editing" : "Creating"} a Memory</Typography>
 
-                <TextField 
-                    name="creator" 
-                    InputProps={{classes: {input: classes.formTextInput}}} 
-                    InputLabelProps={{style: {fontFamily: "'Montserrat', sans-serif", fontWeight: 400}}} 
-                    variant="outlined" 
-                    label="Creator" 
-                    fullWidth 
-                    value={postData.creator} 
-                    onChange={(e) => setPostData({ ...postData, creator: e.target.value })} 
-                />
                 <TextField 
                     name="title" 
                     InputProps={{classes: {input: classes.formTextInput}}} 
@@ -87,7 +86,7 @@ const Form = ({ currentId, setCurrentId }) => {
                     InputProps={{classes: {input: classes.formTextInput}}} 
                     InputLabelProps={{style: {fontFamily: "'Montserrat', sans-serif", fontWeight: 400}}} 
                     variant="outlined" 
-                    label="Tags" 
+                    label="Tags (comma separated)" 
                     fullWidth 
                     value={postData.tags} 
                     onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })} 
