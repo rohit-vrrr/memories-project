@@ -18,7 +18,7 @@ app.use('/posts', postRoutes);
 app.use('/user', userRoutes);
 
 app.get('/', (req, res) => {
-    res.send("Memories API");
+    res.send("Memento API");
 });
 
 const port = process.env.PORT || 5000;
