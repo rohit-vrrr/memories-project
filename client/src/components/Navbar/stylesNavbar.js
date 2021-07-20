@@ -43,4 +43,36 @@ export default makeStyles((theme) => ({
         color: theme.palette.getContrastText(deepPurple[500]),
         backgroundColor: deepPurple[500]
     },
+    [theme.breakpoints.down('sm')]: {
+        appBar: {
+            flexDirection: 'column'
+        },
+        heading: {
+            fontSize: '40px',
+            justifyContent: 'center'
+        },
+        image: {
+            marginLeft: '10px',
+            height: '40px'
+        },
+        toolbar: {
+            justifyContent: 'center',
+            width: '300px',
+            padding: 0
+        },
+        profile: {
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center'
+        },
+        purple: {
+            marginRight: '15px'
+        },
+        userName: {
+            marginRight: '15px'
+        },
+        button: {
+            fontSize: '10px'
+        }
+    }
 }));

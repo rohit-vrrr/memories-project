@@ -51,10 +51,10 @@ const Navbar = () => {
                                 {user.result.name.charAt(0)}
                             </Avatar>
                             <Typography className={classes.userName} variant="h6">{user.result.name}</Typography>
-                            <Button className={classes.logout} variant="contained" color="secondary" onClick={logout}>Logout</Button>
+                            <Button className={classes.button} variant="contained" color="secondary" onClick={logout}>Logout</Button>
                         </div>
                     ) : (
-                        <Button component={Link} to='/auth' variant="contained" color="primary">Sign In</Button>
+                        <Button className={classes.button} component={Link} to='/auth' variant="contained" color="primary">Sign In</Button>
                     )
                 }
             </Toolbar>
