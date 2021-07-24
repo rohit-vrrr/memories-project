@@ -19,7 +19,7 @@ export default makeStyles((theme) => ({
         fontWeight: 700
     },
     image: {
-        marginLeft: '15px'
+        marginLeft: '20px'
     },
     toolbar: {
         display: 'flex',
